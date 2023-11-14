@@ -33,7 +33,11 @@ int _printf_i_d(const char *format, ...)
 		{
 			printed_chars += _putchar(*format);
 		}
-		format++;
+case 'd':
+                                case 'i':
+                                        printed_chars += _printf_int(va_arg(args, int));
+                                        break;		
+					format++;
 	}
 	va_end(args);
 	return (printed_chars);
