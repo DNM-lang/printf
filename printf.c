@@ -1,45 +1,63 @@
 #include "main.h"
+#include <stdarg.h>
 /**
- * _printf - is a function that selects the correct function to print.
- * @format: identifier to look for.
- * Return: the length of the string.
+ * _printf - prints the returned value.
+ * @format: pointer containing the values.
+ * Return: the the printed char
  */
-int _printf(const char * const format, ...)
+int _printf(const char *format, ...)
 {
-	convert_match m[] = {
-		{"%s", printf_string}, {"%c", printf_char},
-		{"%%", printf_37},
-		{"%i", printf_int}, {"%d", printf_dec}, {"%r", printf_srev},
-		{"%R", printf_rot13}, {"%b", printf_bin}, {"%u", printf_unsigned},
-		{"%o", printf_oct}, {"%x", printf_hex}, {"%X", printf_HEX},
-		{"%S", printf_exclusive_string}, {"%p", printf_pointer}
-	};
-
 	va_list args;
-	int i = 0, j, len = 0;
+	int printed_chars = 0;
 
 	va_start(args, format);
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (-1);
-
-Here:
-	while (format[i] != '\0')
+	while (*format)
 	{
-		j = 13;
-		while (j >= 0)
+		if (*format == '%')
 		{
-			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
+			format++;
+			switch (*format)
 			{
-				len += m[j].f(args);
-				i = i + 2;
-				goto Here;
+				case 'c':
+					printed_chars += _putchar(va_arg(args, int));
+					break;
+				case 's':
+					printed_chars += _printf_string(va_arg(args, char *));
+					break;
+				case '%':
+					printed_chars += _putchar('%');
+					break;
+				default:
+					_putchar('%');
+					_putchar(*format);
+					printed_chars += 2;
+					break;
 			}
-			j--;
 		}
-		_putchar(format[i]);
-		len++;
-		i++;
+		else
+		{
+			printed_chars += _putchar(*format);
+		}
+		format++;
 	}
 	va_end(args);
-	return (len);
+	return (printed_chars);
+}
+/**
+ * _printf_string - prints the string.
+ * @s: pointer to location of string.
+ * Return: count the string.
+ */
+int _printf_string(char *s)
+{
+	int count = 0;
+
+	if (s == NULL)
+		s = "(null)";
+	while (*s)
+	{
+		count += _putchar(*s);
+		s++;
+	}
+	return (count);
 }
