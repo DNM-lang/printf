@@ -1,10 +1,10 @@
 #include "main.h"
 #include <stdarg.h>
-#include <unistd.h>
+#include <stddef.h>
 /**
- *_printf - Custom printf function supporting %c, %s, and %%
- * @format: Format string with optional specifiers
- * Return: Number of characters printed (excluding the null byte)
+ * _printf - prints the returned value.
+ * @format: pointer containing the values.
+ * Return: the the printed char
  */
 int _printf(const char *format, ...)
 {
@@ -29,8 +29,9 @@ int _printf(const char *format, ...)
 					printed_chars += _putchar('%');
 					break;
 				default:
-					printed_chars += _putchar('%');
-					printed_chars += _putchar(*format);
+					_putchar('%');
+					_putchar(*format);
+					printed_chars += 2;
 					break;
 			}
 		}
@@ -43,10 +44,11 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (printed_chars);
 }
-int _putchar(int c)
-{
-	return (write(1, &c, 1));
-}
+/**
+ * _printf_string - prints the string.
+ * @s: pointer to location of string.
+ * Return: count the string.
+ */
 int _printf_string(char *s)
 {
 	int count = 0;
@@ -60,4 +62,3 @@ int _printf_string(char *s)
 	}
 	return (count);
 }
-
