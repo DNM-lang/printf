@@ -3,14 +3,7 @@
 #include <stddef.h>
 /**
  * _printf - prints the returned value.
- * print_perc - percentage %
- * print_c - character
- * _printf_string - prints string
  * @format: pointer containing the values.
- * @s: pointer to string
- * val: argument
- * Return: i
- * Return: length of string
  * Return: the the printed char
  */
 int _printf(const char *format, ...)
@@ -52,9 +45,9 @@ int _printf(const char *format, ...)
 	return (printed_chars);
 }
 /**
- * _printf_string - prints string
+ * _printf_string
  * @s: pointer to string
- * Return: length
+ * Return: string length
  */
 int _printf_string(char *s)
 {
@@ -70,8 +63,8 @@ int _printf_string(char *s)
 	return (count);
 }
 /**
- * print_c - character
- * val: args
+ * print_c - prints chars
+ * @val: arg
  * Return: i
  */
 int print_c(va_list val)
@@ -83,7 +76,7 @@ int print_c(va_list val)
 	return (1);
 }
 /**
- * print_perc - prints percentage %
+ * print_perc - prints %
  * Return: i
  */
 int print_perc(void)
