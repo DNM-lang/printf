@@ -2,9 +2,9 @@
 #include <stdarg.h>
 #include <stddef.h>
 /**
- * _printf - prints the returned value.
+ * _printf - prints the returned value
  * @format: pointer containing the values.
- * Return: the the printed char
+ * Return: values
  */
 int _printf(const char *format, ...)
 {
@@ -45,10 +45,11 @@ int _printf(const char *format, ...)
 	return (printed_chars);
 }
 /**
- * _printf_string
+ * _printf_string - prints string
  * @s: pointer to string
- * Return: string length
+ * Return: length of string
  */
+
 int _printf_string(char *s)
 {
 	int count = 0;
@@ -64,7 +65,7 @@ int _printf_string(char *s)
 }
 /**
  * print_c - prints chars
- * @val: arg
+ * @val: argument
  * Return: i
  */
 int print_c(va_list val)
@@ -76,7 +77,7 @@ int print_c(va_list val)
 	return (1);
 }
 /**
- * print_perc - prints %
+ * print_perc - % percentage printed
  * Return: i
  */
 int print_perc(void)
