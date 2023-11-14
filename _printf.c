@@ -27,9 +27,6 @@ int _printf(const char *format, ...)
 					break;
 				case '%':
 					printed_chars += _putchar('%');
-				case 'd':
-                                case 'i':
-                                        printed_chars += _printf_int(va_arg(args, int));
 					break;
 				default:
 					_putchar('%');
