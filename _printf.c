@@ -19,6 +19,10 @@ int _printf(const char *format, ...)
 			format++;
 			switch (*format)
 			{
+				case 'd':
+                                case 'i':
+                                        printed_chars += _printf_int(va_arg(args, int));
+                                        break;
 				case 'c':
 					printed_chars += _putchar(va_arg(args, int));
 					break;
