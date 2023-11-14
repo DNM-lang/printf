@@ -1,10 +1,10 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
 /**
- * _printf - prints string, character and %
- * @format: pointer to location containing the element
- * Return: Return the c,s or %
+ *_printf - Custom printf function supporting %c, %s, and %%
+ * @format: Format string with optional specifiers
+ * Return: Number of characters printed (excluding the null byte)
  */
 int _printf(const char *format, ...)
 {
@@ -23,15 +23,14 @@ int _printf(const char *format, ...)
 					printed_chars += _putchar(va_arg(args, int));
 					break;
 				case 's':
-					printed_chars += printf_string(va_arg(args, char *));
+					printed_chars += _printf_string(va_arg(args, char *));
 					break;
 				case '%':
 					printed_chars += _putchar('%');
 					break;
 				default:
-					_putchar('%');
-					_putchar(*format);
-					printed_chars += 2;
+					printed_chars += _putchar('%');
+					printed_chars += _putchar(*format);
 					break;
 			}
 		}
@@ -43,5 +42,22 @@ int _printf(const char *format, ...)
 	}
 	va_end(args);
 	return (printed_chars);
+}
+int _putchar(int c)
+{
+	return (write(1, &c, 1));
+}
+int _printf_string(char *s)
+{
+	int count = 0;
+
+	if (s == NULL)
+		s = "(null)";
+	while (*s)
+	{
+		count += _putchar(*s);
+		s++;
+	}
+	return (count);
 }
 
