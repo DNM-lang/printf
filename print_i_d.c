@@ -1,11 +1,11 @@
 #include "main.h"
 #include <stdarg.h>
 /**
- * _printf - prints the charscters
+ * _printf_i_d - prints the charscters
  * @format: pointer to the elements.
  * Return: printed charscter
  */
-int _printf(const char *format, ...)
+int _printf_i_d(const char *format, ...)
 {
 	va_list args;
 	int printed_chars = 0;
