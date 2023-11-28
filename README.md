@@ -48,5 +48,5 @@ Welcome to the repository showcasing an advanced implementation of the `printf` 
 Feel free to delve into this enhanced `printf` implementation, designed to elevate your C programming experience. For inquiries or suggestions, please reach out to the contributors:
 
 - **Dennis Njoroge (DNM_lang)**
-- **Blessings Chidouw**
+- **Blessi3Ong**
 
